@@ -92,7 +92,7 @@ void StateParse::parseObject(TiXmlElement* ObjectNode, std::vector<gameObject*> 
 			textureID = e->Attribute("textureID");
 
 			//creay game object
-			gameObject* gObject = GameObjectFactory::instance()->CreatObject(e->Attribute("TYPE"));
+			gameObject* gObject = GameObjectFactory::instance()->CreatObject(e->Attribute("type"));
 
 			//load game object with parsed infornmations from object node
 			gObject->load(new loadPrams(x, y, width, height, textureID, numFrame, callbackID, animSpeed));

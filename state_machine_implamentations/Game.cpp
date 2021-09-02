@@ -37,10 +37,10 @@ bool Game::init(const std::string& name, int screanWidth, int screanHeiht)
 			running = true;
 		}
 		//register game objects factors befor object creation
-		GameObjectFactory::instance()->RegisterFactory("PLAYER", new playerCreator());
-		GameObjectFactory::instance()->RegisterFactory("ENEMY", new enemyCreator());
-		GameObjectFactory::instance()->RegisterFactory("MENUBUTTON", new menuCreator());
-		GameObjectFactory::instance()->RegisterFactory("ANIMATEDGRPHIC", new animatedGraphicCreator());
+		GameObjectFactory::instance()->RegisterFactory("Player", new playerCreator());
+		GameObjectFactory::instance()->RegisterFactory("Enemy", new enemyCreator());
+		GameObjectFactory::instance()->RegisterFactory("MenuButton", new menuCreator());
+		GameObjectFactory::instance()->RegisterFactory("AnimatedGraphic", new animatedGraphicCreator());
 
  		m_stateMachine->statePush(new mainMenuState());
 
