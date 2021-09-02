@@ -1,6 +1,7 @@
 #include "GameOverState.h"
 #include"AnimatedGraphic.h"
 #include"menuButton.h"
+#include"mainMenuState.h"
 #include"menuState.h"
 #include"TextureManager.h"
 #include"playerState.h"
@@ -51,21 +52,23 @@ bool GameOverState::onExit()
 
 void GameOverState::s_gameOverToMain()
 {
-	Game::instance()->getStateMachine()->stateChange(new playerState());
+	Game::instance()->getStateMachine()->stateChange(new mainMenuState());
 }
 
 void GameOverState::s_restartPlay()
 {
-	Game::instance()->closeGame();
+	Game::instance()->getStateMachine()->stateChange(new playerState());
 }
 
 void GameOverState::setCallbacks(const std::vector<callback>& callback)
 {
-	for (int i = 0; i < callback.size(); i++)
-	{
-		if (menuButton* button = dynamic_cast<menuButton*>(m_gameObject[i]))
-		{
-			button->setCallback(callback[button->getCallBackID()]);
+	//go through the objects
+	for (unsigned i = 0; i < m_gameObject.size(); i++) {
+		//if they are of type MenuButton then assign a callback
+		//based on the id passed in from the list
+		if (dynamic_cast<menuButton*>(m_gameObject[i])) {
+			menuButton* pButton = dynamic_cast<menuButton*>(m_gameObject[i]);
+			pButton->setCallback(callback[pButton->getCallBackID()]);
 		}
 	}
 }

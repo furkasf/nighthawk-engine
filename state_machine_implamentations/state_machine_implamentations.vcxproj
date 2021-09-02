@@ -203,16 +203,17 @@
     <ClInclude Include="vector2D.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="exit_button.png" />
-    <Image Include="gameover.png" />
-    <Image Include="helicopter.png" />
-    <Image Include="helicopter2.png" />
-    <Image Include="play_button.png" />
-    <Image Include="restart.png" />
-    <Image Include="resume.png" />
+    <Xml Include="test.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="test.xml" />
+    <Image Include="resourch\exit_button.png" />
+    <Image Include="resourch\gameover.png" />
+    <Image Include="resourch\helicopter.png" />
+    <Image Include="resourch\helicopter2.png" />
+    <Image Include="resourch\main.png" />
+    <Image Include="resourch\play_button.png" />
+    <Image Include="resourch\restart.png" />
+    <Image Include="resourch\resume.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

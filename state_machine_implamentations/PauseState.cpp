@@ -1,6 +1,7 @@
 #include "PauseState.h"
 #include "menuButton.h"
 #include"StateParse.h"
+#include"mainMenuState.h"
 #include"menuState.h"
 #include"playerState.h"
 #include"TextureManager.h"
@@ -56,18 +57,19 @@ void PauseState::onPause()
 
 void PauseState::exitPause()
 {
-	Game::instance()->getStateMachine()->stateChange(new playerState());
+	Game::instance()->getStateMachine()->stateChange(new mainMenuState());
 }
 
 void PauseState::setCallbacks(const std::vector<callback>& callback)
 {
-	for (int i = 0; i < m_callback.size(); i++)
+	for (unsigned i = 0; i < m_gameObject.size(); i++)
 	{
-
-		if (menuButton *button = dynamic_cast<menuButton*>(m_gameObject[i]))
+		//if they are of type MenuButton then assign a callback
+		//based on the id passed in from the list
+		if (dynamic_cast<menuButton*>(m_gameObject[i]))
 		{
-			//set callback indor ofon callback vector
-			button->setCallback(callback[button->getCallBackID()]);
+			menuButton* pButton = dynamic_cast<menuButton*>(m_gameObject[i]);
+			pButton->setCallback(callback[pButton->getCallBackID()]);
 		}
 	}
 }

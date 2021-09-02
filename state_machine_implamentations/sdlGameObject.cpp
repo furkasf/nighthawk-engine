@@ -12,8 +12,7 @@ void sdlGameObject::update()
 
 void sdlGameObject::draw()
 {
-	
-	
+	TextureManager::instance()->drawFrame(m_textureId, m_position.get_x(), m_position.get_x(), m_width, m_height, m_currentFrame, m_currentRow, m_numFrame);
 }
 
 void sdlGameObject::load(const loadPrams* params) 

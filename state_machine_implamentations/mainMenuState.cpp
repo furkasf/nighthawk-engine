@@ -59,8 +59,6 @@ bool mainMenuState::onExit()
 
 	m_gameObject.clear();
 	
-	TextureManager::instance()->clearTextureMap("exitButton");
-
 	return true;
 }
 
@@ -79,12 +77,15 @@ void mainMenuState::menuToPlay()
 
 void mainMenuState::setCallbacks(const std::vector<callback>& callback)
 {
-	for (int i = 0; i < m_gameObject.size(); i++)
+	// go through the objects
+	for (unsigned i = 0; i < m_gameObject.size(); i++) 
 	{
-		if (menuButton* button = dynamic_cast<menuButton*>(m_gameObject[i]))
+		//if they are of type MenuButton then assign a callback
+		//based on the id passed in from the list
+		if (dynamic_cast<menuButton*>(m_gameObject[i]))
 		{
-			button->setCallback(callback[button->getCallBackID()]);
+			menuButton* pButton = dynamic_cast<menuButton*>(m_gameObject[i]);
+			pButton->setCallback(callback[pButton->getCallBackID()]);
 		}
-		
 	}
 }

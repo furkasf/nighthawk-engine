@@ -29,7 +29,7 @@ void playerState::update()
 
 	if (cheackCollision(dynamic_cast<sdlGameObject*>(m_gameObject[0]), dynamic_cast<sdlGameObject*>(m_gameObject[1])))
 	{
-		
+		Game::instance()->getStateMachine()->statePush(new GameOverState());
 	}
 }
 

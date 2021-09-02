@@ -163,31 +163,34 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="exit_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="play_button.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="helicopter2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="helicopter.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="restart.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="resume.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="gameover.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <Xml Include="test.xml">
       <Filter>External Data Files</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resourch\exit_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\gameover.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\helicopter.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\helicopter2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\play_button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\restart.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\resume.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="resourch\main.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

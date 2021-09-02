@@ -8,7 +8,7 @@ menuButton::menuButton() : sdlGameObject()
 
 void menuButton::draw()
 {
-	
+	sdlGameObject::draw();
 }
 
 void menuButton::update()
