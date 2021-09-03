@@ -7,8 +7,9 @@ menuButton::menuButton() : sdlGameObject()
 }
 
 void menuButton::draw()
+
 {
-	sdlGameObject::draw();
+	TextureManager::instance()->draw(m_textureId, m_position.get_x(), m_position.get_y(), m_width, m_height, Game::instance()->get_renderer(), SDL_FLIP_NONE);
 }
 
 void menuButton::update()

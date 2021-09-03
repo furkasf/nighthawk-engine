@@ -37,50 +37,23 @@ bool TextureManager::load(std::string path, SDL_Renderer* renderer, std::string 
 	return true;
 }
 
-void TextureManager::draw(std::string id, int x, int y, int desx, int desy, int width, int height)
+void TextureManager::draw(std::string id, int x, int y, int width, int height,
+	SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
-	//SDL_SetRenderDrawColor(Game::instance()->get_renderer(), 255, 255, 255, 255);
-	SDL_Rect src;
-	SDL_Rect dst;
+	SDL_Rect srcRect;
+	SDL_Rect destRect;
 
-	src.x = x;
-	dst.x = desx;
-	src.y = y;
-	dst.y = desy;
-	src.w = width;
-	src.h = height;
-	dst.w = width;
-	dst.h = height;
+	destRect.w = width;
+	destRect.h = height;
+	destRect.x = x;
+	destRect.y = y;
 
-	
-	if (SDL_RenderCopy(Game::instance()->get_renderer(), m_textureID[id], &src, &dst) != 0)
-	{
-		std::cout << "error : " << SDL_GetError() << "\n";
-		std::cout << "texture can't drawed \n";
-	}
-}
+	srcRect.x = 0;
+	srcRect.y = 0;
+	srcRect.w = destRect.w;
+	srcRect.h = destRect.h;
 
-void TextureManager::draw(std::string id, int x, int y, int width, int height)
-{
-	//SDL_SetRenderDrawColor(Game::instance()->get_renderer(), 255, 255, 255, 255);
-	SDL_Rect src;
-	SDL_Rect dst;
-
-	src.x = x;
-	dst.x = x;
-	src.y = y;
-	dst.y = y;
-	src.w = width;
-	src.h = height;
-	dst.w = width;
-	dst.h = height;
-
-
-	if (SDL_RenderCopy(Game::instance()->get_renderer(), m_textureID[id], &src, &dst) != 0)
-	{
-		std::cout << "error : " << SDL_GetError() << "\n";
-		std::cout << "texture can't drawed \n";
-	}
+	SDL_RenderCopyEx(pRenderer, m_textureID[id], &srcRect, &destRect, 0, 0, flip);
 }
 
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, int currentRow, int currentFrame, double angle, Uint8 alpha  , SDL_RendererFlip flip)
