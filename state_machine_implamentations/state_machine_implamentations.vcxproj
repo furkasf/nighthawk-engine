@@ -169,6 +169,7 @@
     <ClCompile Include="stateMachime.cpp" />
     <ClCompile Include="StateParse.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
     <ClCompile Include="tinyxml\tinystr.cpp" />
     <ClCompile Include="tinyxml\tinyxml.cpp" />
     <ClCompile Include="tinyxml\tinyxmlerror.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="enemyCreator.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameOverState.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="menuButton.h" />
@@ -200,6 +202,7 @@
     <ClInclude Include="stateMachime.h" />
     <ClInclude Include="StateParse.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="TileLayer.h" />
     <ClInclude Include="tinyxml\tinystr.h" />
     <ClInclude Include="tinyxml\tinyxml.h" />
     <ClInclude Include="vector2D.h" />
