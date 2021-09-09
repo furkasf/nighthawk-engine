@@ -156,6 +156,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameOverState.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="mainMenuState.cpp" />
     <ClCompile Include="menuButton.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="enemyCreator.h" />
     <ClInclude Include="GameObjectFactory.h" />
     <ClInclude Include="GameOverState.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="mainMenuState.h" />
     <ClInclude Include="menuButton.h" />
     <ClInclude Include="menuCreator.h" />
