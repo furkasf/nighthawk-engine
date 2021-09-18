@@ -1,5 +1,6 @@
 #pragma once
 #include"Layer.h"
+#include"LevelParser.h"
 #include<vector>
 #include<string>
 
@@ -29,5 +30,8 @@ protected:
 	//store tile sets informatio here
 	std::vector<TileSet> m_tileSets;
 	std::vector<Layer*> m_layers;
+	//level class freind to level parser class
+	friend class LevelParser;
+	Level(){}
 };
 
