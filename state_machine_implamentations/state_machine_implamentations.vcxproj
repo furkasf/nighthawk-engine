@@ -74,22 +74,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <ExternalIncludePath>C:\vslib\SDL2-2.0.14\include;C:\vslib\SDL2_image-2.0.5\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\dev\state machine\state_machine_implamentations\state_machine_implamentations\lib;C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <ExternalIncludePath>C:\vslib\SDL2-2.0.14\include;C:\vslib\SDL2_image-2.0.5\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\dev\state machine\state_machine_implamentations\state_machine_implamentations\lib;C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <ExternalIncludePath>C:\vslib\SDL2-2.0.14\include;C:\vslib\SDL2_image-2.0.5\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\dev\state machine\state_machine_implamentations\state_machine_implamentations\lib;C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <ExternalIncludePath>C:\vslib\SDL2-2.0.14\include;C:\vslib\SDL2_image-2.0.5\include;$(ExternalIncludePath)</ExternalIncludePath>
-    <LibraryPath>C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\dev\state machine\state_machine_implamentations\state_machine_implamentations\lib;C:\vslib\SDL2-2.0.14\lib\x64;C:\vslib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimatedGraphic.cpp" />
+    <ClCompile Include="base64\base64.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameObjectFactory.cpp" />
     <ClCompile Include="GameOverState.cpp" />
@@ -179,6 +180,7 @@
   <ItemGroup>
     <ClInclude Include="AnimatedGraphic.h" />
     <ClInclude Include="animatedGraphicCreator.h" />
+    <ClInclude Include="base64\base64.h" />
     <ClInclude Include="BaseCreator.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="enemyCreator.h" />
@@ -208,6 +210,8 @@
     <ClInclude Include="tinyxml\tinystr.h" />
     <ClInclude Include="tinyxml\tinyxml.h" />
     <ClInclude Include="vector2D.h" />
+    <ClInclude Include="zlib\zconf.h" />
+    <ClInclude Include="zlib\zlib.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test.xml" />
