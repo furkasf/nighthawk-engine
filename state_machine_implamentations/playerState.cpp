@@ -35,18 +35,12 @@ void playerState::update()
 
 void playerState::draw()
 {
-	for (int i = 0; i < m_gameObject.size(); i++)
-	{
-		m_gameObject[i]->draw();
-	}
-
+	pLevel->draw();
 }
 
 bool playerState::onEnter()
 {
-	StateParse parser;
-	//now we abstract  load all state initiaization under one api with paring external data resourch
-	parser.parseState("text.xml", "PLAYER", &m_gameObject, &m_textureIDList);
+	pLevel = levelParser.parseLevel("text.xml");
 	return true;
 }
 

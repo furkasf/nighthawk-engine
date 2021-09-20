@@ -81,6 +81,23 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	}
 }
 
+void TextureManager::drawTile(std::string id, int margin, int spacing, int x, int y, int width, int height, int currentRow, int currentFrame, SDL_Renderer* pRenderer)
+{
+	SDL_Rect srcRect;
+	SDL_Rect desRect;
+	//grab places of tile from tile map
+	srcRect.x = margin + (spacing + width) * currentFrame;
+	srcRect.y = margin + (spacing + width) * currentRow;
+	srcRect.w = desRect.w = width;
+	srcRect.h = desRect.h = height;
+
+	//tiles location on screen
+	desRect.x = x;
+	desRect.y = y;
+
+	SDL_RenderCopyEx(pRenderer, m_textureID[id], &srcRect, &desRect, 0, 0, SDL_FLIP_NONE);
+}
+
 void TextureManager::clearTextureMap(std::string id)
 {
 	m_textureID.erase(id);
