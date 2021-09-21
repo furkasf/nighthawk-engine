@@ -198,6 +198,7 @@
     <ClInclude Include="gameObject.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="loadPrams.h" />
+    <ClInclude Include="ObjectLayer.h" />
     <ClInclude Include="PauseState.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="playerCreator.h" />
