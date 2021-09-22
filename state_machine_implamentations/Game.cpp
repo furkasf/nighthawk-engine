@@ -11,7 +11,7 @@
 //initialize static instance of class
 Game* Game::p_instance = nullptr;
 
-Game::Game() : m_window{ nullptr } , m_renderer{ nullptr }, running{ false } , m_stateMachine{ new stateMachime() }
+Game::Game() : m_window{ nullptr } , m_renderer{ nullptr }, running{ false } , m_stateMachine{ new stateMachime() }, m_width{0}, m_height{0}
 {
 }
 
@@ -28,7 +28,10 @@ Game* Game::instance()
 
 bool Game::init(const std::string& name, int screanWidth, int screanHeiht)
 {
-	m_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, screanWidth, screanHeiht, SDL_WINDOW_SHOWN);
+	m_width = screanWidth;
+	m_height = screanHeiht;
+
+	m_window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN);
 	if (m_window != nullptr)
 	{
 		m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
@@ -65,6 +68,16 @@ void Game::draw()
 	m_stateMachine->draw();
 
 	SDL_RenderPresent(m_renderer);
+}
+
+int Game::getWidth()
+{
+	return m_width;
+}
+
+int Game::getHeight()
+{
+	return m_height;
 }
 
 bool Game::get_running()

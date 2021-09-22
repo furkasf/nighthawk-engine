@@ -14,6 +14,8 @@ public:
 	void handleEvents();
 	void update();
 	void draw();
+	int getWidth();
+	int getHeight();
 	bool init(const std::string& name, int screanWidth, int screanHeiht);
 	bool get_running();
 	SDL_Renderer* get_renderer();
@@ -21,6 +23,9 @@ public:
 	stateMachime* getStateMachine();
 
 private:
+
+	int m_width;
+	int m_height;
 
 	static Game* p_instance;
 	SDL_Window* m_window;

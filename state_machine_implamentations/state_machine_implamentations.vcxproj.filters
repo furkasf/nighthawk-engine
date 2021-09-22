@@ -202,6 +202,9 @@
     <Xml Include="test.xml">
       <Filter>External Data Files</Filter>
     </Xml>
+    <Xml Include="map1.xml">
+      <Filter>External Data Files</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resourch\exit_button.png">

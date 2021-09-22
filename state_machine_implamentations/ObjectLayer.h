@@ -3,7 +3,7 @@
 #include"gameObject.h"
 #include<vector>
 
-class ObjectLayer : Layer
+class ObjectLayer : public Layer
 {
 public:
 

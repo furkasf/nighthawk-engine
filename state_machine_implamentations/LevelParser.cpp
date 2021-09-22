@@ -66,14 +66,14 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<TileSet>
 void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>* pLayers, const std::vector<TileSet>* pTilesets)
 {
 	
-	TileLayer* pTilaeLayer = new TileLayer(m_tileSize, pTilesets);
+	TileLayer* pTilaeLayer = new TileLayer(m_tileSize, *pTilesets);
 	//which is hold the uncompressed and decoded data
 	std::vector<std::vector<int>> data;
 
 	std::string decodedIDs;
 	TiXmlElement* pDataNode;
 
-	//select to data node in xml file
+	//found encoded an compressed data
 	for (TiXmlElement* e = pDataNode->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
 		if (e->Value() == "data")
@@ -82,17 +82,17 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 		}
 	}
 
-	//decode selected node atribute
+	//after found encoden and compressed data ,then find text within it
 	for (TiXmlNode* e = pDataNode->FirstChild(); e != nullptr; e = e->NextSiblingElement())
 	{
 		TiXmlText* ptext = e->ToText();
 		std::string text = ptext->Value();
-		//decode the selected text
+		//decodedids now hold decodend base64 string
 		decodedIDs = base64_decode(text);
 	}
 
 	//uncompress zib comprerssion
-	uLongf numGids = m_width * m_height * sizeof(int);
+	uLongf numGids = m_width * m_height * sizeof(int);//total size of uncompressed data
 	std::vector<unsigned> gids(numGids);
 	uncompress((Bytef*)&gids[0], &numGids, (const Bytef*)decodedIDs.c_str(), decodedIDs.size());
 
@@ -102,7 +102,7 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 	{
 		data.push_back(layerRow);
 	}
-
+	//now we can fill our data member woth correct values
 	for (int rows = 0; rows < m_height; rows++)
 	{
 		for (int cols = 0; cols < m_width; cols++)
@@ -112,9 +112,10 @@ void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>
 		}
 	}
 
-	pTilesets->setTileIDs(data);
-
-	pLayers->push_back(pTilesets);
+	//set data member of layer structure
+	pTilaeLayer->setTileIDS(data);
+	//now we can push layer member in level layer vector after everything setting
+	pLayers->push_back(pTilaeLayer);
 }
 
 void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*>* pLayers)
@@ -133,8 +134,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
 			e->Attribute("y", &y);
-			gameObject* pGameObject =
-				GameObjectFactory::instance()->create(e -> Attribute("type"));
+			gameObject* pGameObject = GameObjectFactory::instance()->CreatObject(e -> Attribute("type"));
 			// get the property values
 			for (TiXmlElement* properties = e->FirstChildElement(); properties != NULL; properties = properties -> NextSiblingElement())
 			{
@@ -144,33 +144,27 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 					{
 						if (property->Value() == std::string("property"))
 						{
-							if (property->Attribute("name") ==
-								std::string("numFrames"))
+							if (property->Attribute("name") == std::string("numFrames"))
 							{
 								property->Attribute("value", &numFrames);
 							}
-							else if (property->Attribute("name") ==
-								std::string("textureHeight"))
+							else if (property->Attribute("name") == std::string("textureHeight"))
 							{
 								property->Attribute("value", &height);
 							}
-							else if (property->Attribute("name") ==
-								std::string("textureID"))
+							else if (property->Attribute("name") == std::string("textureID"))
 							{
 								textureID = property->Attribute("value");
 							}
-							else if (property->Attribute("name") ==
-								std::string("textureWidth"))
+							else if (property->Attribute("name") == std::string("textureWidth"))
 							{
 								property->Attribute("value", &width);
 							}
-							else if (property->Attribute("name") ==
-								std::string("callbackID"))
+							else if (property->Attribute("name") == std::string("callbackID"))
 							{
 								property->Attribute("value", &callbackID);
 							}
-							else if (e->Attribute("name") ==
-								std::string("animSpeed"))
+							else if (e->Attribute("name") == std::string("animSpeed"))
 							{
 								property->Attribute("value", &animSpeed);
 							}
@@ -182,6 +176,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
 	}
+
 	pLayers->push_back(pObjectLayer);
 }
 

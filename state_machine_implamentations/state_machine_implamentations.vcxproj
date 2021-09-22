@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="test.xml" />
+    <Xml Include="map1.xml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resourch\exit_button.png" />
