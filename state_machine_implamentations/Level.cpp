@@ -16,7 +16,7 @@ void Level::update()
 {
 	if (!m_layers.empty())
 	{
-		//update all layer from layer vector
+		//update all layer from layer vector - each layer actual piece of level
 		for (int i = 0; i < m_layers.size(); i++)
 		{
 			m_layers[i]->update();

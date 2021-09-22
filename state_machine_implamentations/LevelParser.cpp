@@ -52,25 +52,22 @@ void LevelParser::parseTilesets(TiXmlElement* pTilesetRoot, std::vector<TileSet>
 
 	//create a tileset object
 	TileSet tileset;
-	pTilesetRoot->FirstChildElement()->Attribute("width",
-		&tileset.width);
-	pTilesetRoot->FirstChildElement()->Attribute("height",
-		&tileset.height);
+	pTilesetRoot->FirstChildElement()->Attribute("width", &tileset.width);
+	pTilesetRoot->FirstChildElement()->Attribute("height", &tileset.height);
 	pTilesetRoot->Attribute("firstgid", &tileset.firstGridID);
 	pTilesetRoot->Attribute("tilewidth", &tileset.tileWidth);
 	pTilesetRoot->Attribute("tileheight", &tileset.tileHeight);
 	pTilesetRoot->Attribute("spacing", &tileset.spacing);
 	pTilesetRoot->Attribute("margin", &tileset.margin);
 	tileset.name = pTilesetRoot->Attribute("name");
-	tileset.numColumns = tileset.width / (tileset.tileWidth +
-		tileset.spacing);
+	tileset.numColumns = tileset.width / (tileset.tileWidth + tileset.spacing);
 	pTilesets->push_back(tileset);
 }
 void LevelParser::parseTileLayer(TiXmlElement* pTileElement, std::vector<Layer*>* pLayers, const std::vector<TileSet>* pTilesets)
 {
 	
 	TileLayer* pTilaeLayer = new TileLayer(m_tileSize, pTilesets);
-	//tile data
+	//which is hold the uncompressed and decoded data
 	std::vector<std::vector<int>> data;
 
 	std::string decodedIDs;

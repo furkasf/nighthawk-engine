@@ -2,7 +2,7 @@
 #include"Game.h"
 #include"TextureManager.h"
 
-TileLayer::TileLayer(int tileSize, std::vector<TileSet>& tileset) : m_tilesets{tileset}, m_tileSize{tileSize}, m_position(0, 0), m_velocity(0, 0)
+TileLayer::TileLayer(int tileSize, const std::vector<TileSet>* tileset) : m_tilesets{tileset}, m_tileSize{tileSize}, m_position(0, 0), m_velocity(0, 0)
 {
 	//we get screan area for fit  tiles on screan
 	m_numColumns = Game::instance()->getGameWith() / m_tileSize;
@@ -47,9 +47,9 @@ void TileLayer::update()
 	m_velocity.set_x(1);
 }
 
-void TileLayer::setTileIDS(std::vector<int>& datas)
+void TileLayer::setTileIDS(const std::vector<std::vector<int>>& data)
 {
-	
+	m_tileIDs = data;
 }
 
 void TileLayer::settileSize(int tileSize)
@@ -60,9 +60,9 @@ void TileLayer::settileSize(int tileSize)
 TileSet TileLayer::getTileSetByID(int tileID)
 {
 	//compress each tileset's firstdid value and return the correnct tile set
-	for (int i = 0; i < m_tilesets.size(); i++)
+	for (int i = 0; i < m_tilesets->size(); i++)
 	{
-		if (i + 1 <= m_tilesets.size() - 1)
+		if (i + 1 <= m_tilesets->size() - 1)
 		{
 			if (tileID >= m_tilesets[i].firstGridID && tileID < m_tilesets[i + 1].firstGridID)
 			{
