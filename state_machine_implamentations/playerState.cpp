@@ -5,6 +5,7 @@
 #include"GameOverState.h"
 #include"player.h"
 #include"Enemy.h"
+#include"LevelParser.h"
 #include<string>
 #include<iostream>
 
@@ -40,7 +41,7 @@ void playerState::draw()
 
 bool playerState::onEnter()
 {
-	pLevel = levelParser.parseLevel("text.xml");
+	LevelParser level.parseLevel("tst.xml");
 	return true;
 }
 

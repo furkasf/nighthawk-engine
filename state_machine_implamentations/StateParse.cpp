@@ -40,7 +40,7 @@ void StateParse::parseState(const char* fileName, std::string stateID, std::vect
 	//parse texture node
 	parseTexture(textureNode, textureIDS);
 
-	//predeclare objectNode
+	//predeclare objectNode 
 	TiXmlElement* objectNode = nullptr;
 
 	//get object node from state node
